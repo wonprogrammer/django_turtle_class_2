@@ -14,16 +14,19 @@ def signup(request):
     elif request.method == 'POST':  # 회원가입 진행 
         username = request.POST.get('username')   # username은 signup.html안에 input박스에서 username 이다.
         password = request.POST.get('password')
+        profile = request.POST.get('profilefromfront') # profilefromfront 작성된 내용이 profile에 저장
         passwordcheck = request.POST.get('passwordcheck')
 
         if password == passwordcheck:
-            User.objects.create_user(username=username, password=password)  # models에 저장되어있는 User에 내가 만든 user 저장
+            User.objects.create_user(username=username, password=password, profile=profile)  # models에 저장되어있는 User에 내가 만든 user 저장 (암호화를 곁들인) + profile=profile 은 models에서의 key값과 17번 줄의 변수값을 비교하는 것 (같은변수 아님)
             return HttpResponse('회원가입 완료')
         else:
             # 안좋은 코드
             return HttpResponse('비밀번호가 틀렸습니다')
 
         return HttpResponse('다른 페이지')
+
+
 
 
 
@@ -47,9 +50,13 @@ def login(request):
 
 
 
+
+
 def user(request):
     #request.user = 로그인된 사용자
     return HttpResponse(request.user)  # user명 반환 (장고가 알아서 user값 가져와 : GET/POST 필요 X)
+
+
 
 
 
