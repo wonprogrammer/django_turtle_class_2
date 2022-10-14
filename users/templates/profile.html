@@ -12,8 +12,17 @@
     <!-- context 안 key 값 = user -->
     <div> 
     {{ user }} 이고,
-    {{ user.last_login }}
+    마지막 로그인은? {{ user.last_login }}
     </div>  
+
+    <!-- 회원가입된 유저는 모두 이름과 마지막 로그인 일시가 나오지만  -->
+    <!-- 내 프로필 페이지 + 버튼은 로그인 되어있는 유저와 현재유저가 같아야 뜸 -->
+
+    <!-- request.user = 로그인된 사용자 -->
+    {% if user == request.user %}   
+    <div>내 프로필 페이지</div>
+    <button>프로필 편집버튼</button>
+    {% endif %}
 
 
 

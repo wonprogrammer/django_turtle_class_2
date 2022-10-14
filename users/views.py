@@ -1,8 +1,8 @@
-from multiprocessing import context
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from .models import User
 from django.contrib.auth import authenticate, login as loginsession  # 이름이 같은 login이 있으니 as로 정의된 loginsession 으로 변수이름 설정 가능
+from django.shortcuts import get_object_or_404  # 404페이지를 띄우기 위한 import
 
 
 # Create your views here.
@@ -56,7 +56,9 @@ def user(request):
 
 # 변수명 url에서 username을 인자로 받아오기 때문에 같이 선언해줘야됨 ( 여기서 username = url 에서 사용된 변수명(html에서 가져온거 아님) )
 def profile(request, username):
-    user = User.objects.get(username=username)  # db에 저장된 username 필드 = 로그인 된 username 이랑 같다면 user 맞아! 
+    #user = User.objects.get(username=username)  # db에 저장된 username 필드 = 로그인 된 username 이랑 같다면 user 맞아! 
+
+    user = get_object_or_404(User, username=username) # username이 맞지 않다면 404 페이지 띄우기 + (위에 주석 처리된 코드 의미까지 포함)
 
     context = {
         'user':user
