@@ -23,6 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-vk&zy+o(7d=_u&&h@3v(2u%njlh2s*(davigunxu26vbsh^@2f'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+# 추후 404 페이지 이쁘게 만들려면 False 처리 해주면 됨
 DEBUG = True
 
 ALLOWED_HOSTS = []
@@ -32,6 +33,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'users',
+    'community',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

@@ -18,4 +18,5 @@
 - 오류가 났을때 404 페이지 띄우기
 
 <게시글 작업>
-- 
+- community : models 작업 후 (settings + admin 작업)
+- admin 페이지에서 게시글 작성 시 저장되는 게시글 제목 변경해주기 (in mosels.py)
